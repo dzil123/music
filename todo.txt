@@ -1,0 +1,32 @@
+TODO
+
+1. Write outline for scales(Static), chords(Static), notes w/ volume(hertz, volume; done after class A, B "render")
+2. Fixed second time length for manager? # numpy fixed length array vs dynamic generation
+3. New class ("Track"?) takes extended notes class '1', time, Effects/Filters class '7' # Note does not store sample rate
+4. Manages takes class '3' (multiple) and "renders" to an array with a fixed sample rate. Call Instrument class '11' w/Notes,time,params; then add effects class '7'
+5. Arpegio/Patterns class with number sequence (and timing?); static class?
+6. Generators that create scales, chords, arpegio, melody? -> render to class '3'\
+7. Filter classes, ie cutoff, resonance, eq, reverb, volume, compresion; static class?
+8. Samples class? <- import from wav, add to special class '3'
+9. How to do multitrack effects like sidechain
+10.Import midi data into class '3'
+11.INSTRUMENTS! guitar; square; saw; sine; tri; (piano; drums;)? ; attach to class '3'
+12.How to modulate effects class '7'? automation
+
+
+A. Manage hertz frequency class; some tuple/dict of possible hertz values undefined; ABSTRACT;
+        Has method to convert from isinstance(B) to hertz (and back?);
+
+  1. Traditional scale {A,B,C,D,E,F,G}{,b,#}; outline of midi note #s - lowest note to highest;
+         does not store hertz; accepts isinstance(B.1); ABSTRACT
+
+    a. Equal temperment tuning; implement tuple(dict?); ABSTRACT
+    b. ie: Pythagorean tuning; ABSTRACT
+
+  9. ie: non traditional/12_tone scales: microtonal equal temperment?; accepts isinstance(B.9)
+
+B. Note class; used as parameter to get hertz from instance of class A; Store internally as a int/float; ABSTRACT
+
+  1. 12 Tone note traditional scale; Accepts "C6", "Ab3", 68(midi_note); store as midi note
+
+  9. ie: work with A.9 to implement alternative ways of tuning.
