@@ -18,6 +18,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-# import numpy, wave, matplotlib, tkinter, argparse idk
-
 from . import tuning, note
+
+class Sequence(object):
+	def __init__(self, tuning_manager):
+		if not isinstance(tuning_manager, tuning.Frequency):
+			raise TypeError("'tuning_manager' must be a valid music.tuning.Frequency")
+		
+		self.tuning = tuning_manager

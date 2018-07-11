@@ -18,6 +18,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-# import numpy, wave, matplotlib, tkinter, argparse idk
+import music
 
-from . import tuning, note
+print(music.note.Chromatic("A4"))
+print(music.tuning.EqualTempermentChromatic.get_frequency(music.note.Chromatic("A4")))

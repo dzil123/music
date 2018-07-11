@@ -13,6 +13,9 @@ TODO
 11.INSTRUMENTS! guitar; square; saw; sine; tri; (piano; drums;)? ; attach to class '3'
 12.How to modulate effects class '7'? automation
 
+13.Class to store Sequence of Notes, used in Tracks (3). Combines Notes and timing
+14.Class to render Sequences (13) into numpy
+
 
 A. Manage hertz frequency class; some tuple/dict of possible hertz values undefined; ABSTRACT;
         Has method to convert from isinstance(B) to hertz (and back?);
