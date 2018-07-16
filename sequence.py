@@ -26,3 +26,14 @@ class Sequence(object):
 			raise TypeError("'tuning_manager' must be a valid music.tuning.Frequency")
 		
 		self.tuning = tuning_manager
+		self._list = list()
+	
+	def add(self, new_note, time, duration):
+		hertz = self.tuning.get_frequency(new_note) # don't catch TypeError "note param must be accepted type"
+		
+		note_dict = {"note": hertz, "time": time, "duration": duration}
+		
+		self._list.append(note_dict)
+	
+	def render():
+		return sorted(self._list)

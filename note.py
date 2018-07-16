@@ -28,7 +28,7 @@ class NoteConvertionError(Exception):
 class Note(abc.ABC):
 	def __init__(self, raw_value): # Do not override
 		try:
-			value = int(raw_value)
+			value = int(raw_value) # TODO: make it so if Note(instanceofNote), return the param, dont make new Note, dont make error
 		except ValueError:
 			try:
 				converted_value = self.convert(raw_value)

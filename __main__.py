@@ -19,6 +19,43 @@
 
 
 import music
+import numpy as np
 
-print(music.note.Chromatic("A4"))
-print(music.tuning.EqualTempermentChromatic.get_frequency(music.note.Chromatic("A4")))
+from music.note import Chromatic as Note
+from music.tuning import EqualTempermentChromatic as Tuning
+from music.sequence import Sequence
+from music.instrument import SinWave as Instrument
+
+BPM = 120
+LENGTH_NOTE = 1/4 # quarter note
+NOTE_DURATION = (60 * LENGTH_NOTE) / BPM
+
+NOTES = ("C4", "D4", "E4", "F4")
+
+SAMPLING_RATE = 44100
+BIT_DEPTH
+
+note_list = Sequence(Tuning)
+
+for index, note in enumerate(NOTES):
+	note_object = Note(note)
+	time = NOTE_DURATION * index
+	duration = NOTE_DURATION
+	
+	note_list.add(note_object, time, duration)
+
+note_list_render = note_list.render()
+
+# TMP WORKAROUND BC Instrument.render isnt implemented
+
+#array = np.zeros(SAMPLING_RATE * len(NOTES) * NOTE_DURATION, dtype=np.float64)
+
+instrument = Instrument(SAMPLING_RATE)
+
+array = np.empty(0, type=np.float64)
+
+for note in note_list_render:
+	np.concatenate(array, instrument.render_note(note), out=array)
+
+# TODO render to ints and write to wave
+
