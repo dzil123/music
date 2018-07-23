@@ -48,5 +48,4 @@ class Instrument(object):
 
 class SinWave(Instrument):
 	def _render_note(self, note_render, array):
-		raise NotImplementedError()
-		return np.sin(2 * np.pi * self.sampling_rate * note_render["note"] * array) # idk
+		return np.sin(2 * np.pi * note_render["note"] * array)
