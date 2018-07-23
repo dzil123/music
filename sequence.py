@@ -22,7 +22,7 @@ from . import tuning, note
 
 class Sequence(object):
 	def __init__(self, tuning_manager):
-		if not isinstance(tuning_manager, tuning.Frequency):
+		if not (isinstance(tuning_manager, tuning.Frequency) or issubclass(tuning_manager, tuning.Frequency)):
 			raise TypeError("'tuning_manager' must be a valid music.tuning.Frequency")
 		
 		self.tuning = tuning_manager
@@ -35,5 +35,7 @@ class Sequence(object):
 		
 		self._list.append(note_dict)
 	
-	def render():
-		return sorted(self._list)
+	def render(self):
+		def sort(item):
+			return item["time"]
+		return sorted(self._list, key=sort)
