@@ -33,7 +33,7 @@ NOTE_DURATION = (60 * LENGTH_NOTE) / BPM
 NOTES = ("C4", "D4", "E4", "F4")
 
 SAMPLING_RATE = 44100
-BIT_DEPTH
+# BIT_DEPTH = None # will set when implement wave conversion
 
 note_list = Sequence(Tuning)
 
@@ -52,10 +52,10 @@ note_list_render = note_list.render()
 
 instrument = Instrument(SAMPLING_RATE)
 
-array = np.empty(0, type=np.float64)
+array = np.empty(0, dtype=np.float64)
 
 for note in note_list_render:
-	np.concatenate(array, instrument.render_note(note), out=array)
+	array = np.concatenate( (array, instrument.render_note(note)) ) # arrays to concat must be in tuple
 
 # TODO render to ints and write to wave
 
